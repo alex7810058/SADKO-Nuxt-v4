@@ -1,0 +1,23 @@
+{
+  "name": "sadko-designer",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@sadko/shared": "workspace:*",
+    "@iconify-json/lucide": "^1.2.82",
+    "@iconify-json/simple-icons": "^1.2.63",
+    "@nuxt/ui": "^4.3.0",
+    "nuxt": "^4.2.2",
+    "nuxt-electron": "^0.7.0"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.12.1",
+    "@nuxt/types": "^2.18.1",
+    "electron": "^39.2.7",
+    "electron-builder": "^26.0.12",
+    "eslint": "^9.39.2",
+    "typescript": "^5.9.3",
+    "vue-tsc": "^3.2.1"
+  },
+  "packageManager": "pnpm@10.26.1"
+}

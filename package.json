@@ -1,0 +1,22 @@
+{
+  "name": "sadko-nuxt",
+  "version": "0.0.1",
+  "description": "sadko",
+  "author": "sadko",
+  "private": true,
+  "type": "module",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "typecheck": "nuxt typecheck",
+    "electron:build": "nuxt build && electron-builder",
+    "check:structure": "npx asar list release\\0.0.1\\win-unpacked\\resources\\app.asar | findstr index.html",
+
+    "dev:designer": "nuxt dev --cwd apps/designer"
+  },
+  "packageManager": "pnpm@10.26.1"
+}
