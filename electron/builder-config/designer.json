@@ -1,39 +1,23 @@
 {
   "appId": "com.sadko.designer",
-  "productName": "Sadko Designer",
+  "productName": "Designer",
   "directories": {
     "output": "releases/Designer/electron",
-    "app": "."
+    "app": "./electron"
   },
   "files": [
-    "electron/main.js",
-    "electron/preload.js",
-    "apps/Designer/.output/**/*",
-    "shared/css/**/*",
-    "shared/assets/icons/designer.ico"
+    "**/*",
+    "../apps/Designer/.output/**/*",
+    "../shared/**/*"
   ],
-  "extraMetadata": {
-    "main": "electron/main.js"
-  },
   "extraResources": [
     {
-      "from": "shared/assets/icons/designer.ico",
-      "to": "icon.ico"
+      "from": "../shared/assets/icons/designer.ico",
+      "to": "assets/designer.ico"
     }
   ],
   "win": {
-    "target": "nsis",
-    "icon": "shared/assets/icons/designer.ico"
-  },
-  "nsis": {
-    "oneClick": false,
-    "perMachine": true,
-    "allowToChangeInstallationDirectory": true,
-    "createDesktopShortcut": true,
-    "installerIcon": "shared/assets/icons/designer.ico",
-    "uninstallerIcon": "shared/assets/icons/designer.ico",
-    "installerHeaderIcon": "shared/assets/icons/designer.ico",
-    "artifactName": "Designer-v${version}-setup.${ext}"
-  },
-  "asar": false
+    "target": "portable",
+    "icon": "../shared/assets/icons/designer.ico"
+  }
 }

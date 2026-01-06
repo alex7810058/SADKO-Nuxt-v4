@@ -1,5 +1,6 @@
 {
   "name": "sadko-designer",
-  "version": "1.0.0",
-  "main": "main.js"
+  "version": "0.0.1",
+  "main": "main.js",
+  "private": true
 }
