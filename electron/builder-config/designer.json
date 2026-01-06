@@ -3,26 +3,17 @@
   "productName": "Sadko Designer",
   "directories": {
     "output": "../../releases/Designer/electron",
-    "app": "." // Указываем, что корень проекта — это папка приложения
+    "app": "./electron"
   },
   "files": [
-    // 1. Ключевые Electron-файлы. Они будут упакованы в корень архива app.asar.
-    "electron/main.js",
-    {
-      "from": "electron/preload.js",
-      "to": "preload.js" // Явно указываем конечный путь в архиве
-    },
-    // 2. Собранное SPA-приложение
-    "apps/Designer/.output/**/*",
-    // 3. Общие ресурсы (по желанию)
-    "shared/css/**/*"
-  ],
-  "asarUnpack": [
-    "electron/preload.js" // Этот файл будет распакован из asar для доступа рендерера
+    "**/*"
   ],
   "extraMetadata": {
-    "main": "main.js" // Теперь main.js будет в корне архива
+    "main": "electron/main.js"
   },
+  "asarUnpack": [
+    "electron/preload.js"
+  ],
   "extraResources": [
     {
       "from": "shared/assets/icons/designer.ico",
