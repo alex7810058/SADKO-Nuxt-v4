@@ -1,0 +1,36 @@
+{
+  "appId": "com.sadko.designer",
+  "productName": "Sadko Designer",
+  "directories": {
+    "output": "../../releases/Designer/electron"
+  },
+  "files": [
+    {
+      "from": "electron",
+      "to": ".",
+      "filter": ["**/*"]
+    },
+    {
+      "from": "apps/Designer/.output",
+      "to": "./.output",
+      "filter": ["**/*"]
+    }
+  ],
+  "extraResources": [
+    {
+      "from": "shared/assets/icons/designer.ico",
+      "to": "assets/",
+      "filter": ["**/*"]
+    }
+  ],
+  "win": {
+    "target": "nsis",
+    "icon": "shared/assets/icons/designer.ico"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "installerIcon": "shared/assets/icons/designer.ico",
+    "uninstallerIcon": "shared/assets/icons/designer.ico"
+  }
+}
