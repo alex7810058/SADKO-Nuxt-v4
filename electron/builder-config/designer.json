@@ -2,25 +2,31 @@
   "appId": "com.sadko.designer",
   "productName": "Sadko Designer",
   "directories": {
-    "output": "../../releases/Designer/electron"
+    "output": "../../releases/Designer/electron",
+    "app": "." // Указываем, что корень проекта — это папка приложения
   },
   "files": [
+    // 1. Ключевые Electron-файлы. Они будут упакованы в корень архива app.asar.
+    "electron/main.js",
     {
-      "from": "electron",
-      "to": ".",
-      "filter": ["**/*"]
+      "from": "electron/preload.js",
+      "to": "preload.js" // Явно указываем конечный путь в архиве
     },
-    {
-      "from": "apps/Designer/.output",
-      "to": "./.output",
-      "filter": ["**/*"]
-    }
+    // 2. Собранное SPA-приложение
+    "apps/Designer/.output/**/*",
+    // 3. Общие ресурсы (по желанию)
+    "shared/css/**/*"
   ],
+  "asarUnpack": [
+    "electron/preload.js" // Этот файл будет распакован из asar для доступа рендерера
+  ],
+  "extraMetadata": {
+    "main": "main.js" // Теперь main.js будет в корне архива
+  },
   "extraResources": [
     {
       "from": "shared/assets/icons/designer.ico",
-      "to": "assets/",
-      "filter": ["**/*"]
+      "to": "assets/designer.ico"
     }
   ],
   "win": {
@@ -29,8 +35,11 @@
   },
   "nsis": {
     "oneClick": false,
+    "perMachine": true,
     "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
     "installerIcon": "shared/assets/icons/designer.ico",
-    "uninstallerIcon": "shared/assets/icons/designer.ico"
+    "uninstallerIcon": "shared/assets/icons/designer.ico",
+    "artifactName": "Designer-v${version}-setup.${ext}"
   }
 }

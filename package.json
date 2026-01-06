@@ -8,7 +8,7 @@
   "scripts": {
     "dev:designer": "nuxt dev --cwd apps/designer",
     "build:designer": "nuxt build --cwd apps/Designer",
-    "electron:build:designer": "cross-env APP_NAME=designer NODE_ENV=production electron-builder --config electron/builder-config/designer.json"
+    "electron:build:designer": "npm run build:designer && cross-env APP_NAME=designer NODE_ENV=production electron-builder --config electron/builder-config/designer.json"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
