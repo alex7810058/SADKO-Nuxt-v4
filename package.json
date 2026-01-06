@@ -6,16 +6,50 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev:designer": "nuxt dev --cwd apps/designer",
+    "dev:designer": "nuxt dev --cwd apps/Designer",
+    "dev:vk-pult": "nuxt dev --cwd apps/VkPult",
+    "dev:client": "nuxt dev --cwd apps/Client",
+    "dev:diaes": "nuxt dev --cwd apps/Diaes",
+
     "build:designer": "nuxt build --cwd apps/Designer",
-    "electron:build:designer": "npm run build:designer && cross-env APP_NAME=designer NODE_ENV=production electron-builder --config electron/builder-config/designer.json"
+    "build:vk-pult": "nuxt build --cwd apps/VkPult",
+    "build:client": "nuxt build --cwd apps/Client",
+    "build:diaes": "nuxt build --cwd apps/Diaes",
+
+    "build:all": "npm run build:designer && npm run build:vk-pult && npm run build:client && npm run build:diaes",
+
+    "electron:dev:designer": "cross-env APP_NAME=designer NODE_ENV=development electron electron/main.js",
+    "electron:dev:vk-pult": "cross-env APP_NAME=vk-pult NODE_ENV=development electron electron/main.js",
+    "electron:dev:client": "cross-env APP_NAME=client NODE_ENV=development electron electron/main.js",
+    "electron:dev:diaes": "cross-env APP_NAME=diaes NODE_ENV=development electron electron/main.js",
+
+    "electron:build:designer": "npm run build:designer && cross-env APP_NAME=designer NODE_ENV=production electron-builder --config electron/builder-config/designer.json",
+    "electron:build:vk-pult": "npm run build:vk-pult && cross-env APP_NAME=vk-pult NODE_ENV=production electron-builder --config electron/builder-config/vk-pult.json",
+    "electron:build:client": "npm run build:client && cross-env APP_NAME=client NODE_ENV=production electron-builder --config electron/builder-config/client.json",
+    "electron:build:diaes": "npm run build:diaes && cross-env APP_NAME=diaes NODE_ENV=production electron-builder --config electron/builder-config/diaes.json",
+
+    "electron:build:all": "npm run electron:build:designer && npm run electron:build:vk-pult && npm run electron:build:client && npm run electron:build:diaes",
+
+    "clean": "rm -rf releases apps/*/.output apps/*/.nuxt node_modules",
+    "clean:releases": "rm -rf releases",
+
+    "typecheck": "cd apps/Designer && nuxi typecheck"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2",
+    "@nuxt/eslint": "^1.12.1",
     "cross-env": "^7.0.3",
     "electron": "^39.2.7",
-    "electron-builder": "^26.0.12",
-    "nuxt-electron": "^0.7.0"
+    "electron-builder": "^26.4.0",
+    "eslint": "^9.39.2",
+    "nuxt-electron": "^0.7.0",
+    "typescript": "^5.9.3",
+    "vue-tsc": "^3.2.1"
+  },
+  "dependencies": {
+    "@iconify-json/lucide": "^1.2.82",
+    "@iconify-json/simple-icons": "^1.2.63",
+    "@nuxt/ui": "^4.3.0",
+    "nuxt": "^4.2.2"
   },
   "packageManager": "pnpm@10.26.1"
 }
