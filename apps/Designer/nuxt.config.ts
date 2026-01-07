@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   modules: ['@nuxt/ui'],
   ssr: false,
+  css: ['@sadko/shared/css/nuxt-ui.main.css'],
   nitro: {
     preset: 'static',
     serveStatic: true

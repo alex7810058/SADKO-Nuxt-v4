@@ -1,0 +1,39 @@
+const isDev = process.env.NODE_ENV === 'development'
+
+export default defineNuxtConfig({
+  modules: [
+    '@nuxt/eslint',
+    '@nuxt/ui',
+    ...(isDev ? [] : ['nuxt-electron'])
+  ],
+  ssr: false,
+
+  css: ['@sadko/shared/css/nuxt-ui.main.css'],
+  ui: {
+    colorMode: false
+  },
+
+  app: {
+    baseURL: './',
+    buildAssetsDir: '_nuxt/' // Стандартная папка Nuxt
+  },
+
+  router: {
+    options: {
+      hashMode: false
+    }
+  },
+
+  nitro: {
+    preset: 'static'
+  },
+
+  // Убираем кастомные настройки Vite - пусть работает по умолчанию
+  electron: {
+    build: [
+      {
+        entry: 'electron/main.ts'
+      }
+    ]
+  }
+})

@@ -51,7 +51,7 @@ function createWindow() {
 function loadApp(window) {
   if (isDev) {
     // Dev режим
-    window.loadURL('http://127.0.0.1')
+    window.loadURL('http://localhost:3001')
       .catch(err => console.error('Dev load error:', err))
   } else {
     // Production - используем __dirname вместо process.resourcesPath
