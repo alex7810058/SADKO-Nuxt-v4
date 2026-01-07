@@ -14,7 +14,7 @@ export default defineNuxtConfig({
   },
 
   app: {
-    baseURL: '/',
+    baseURL: './',
     buildAssetsDir: '_nuxt/' // Стандартная папка Nuxt
   },
 
@@ -26,14 +26,5 @@ export default defineNuxtConfig({
 
   nitro: {
     preset: 'static'
-  },
-
-  // Убираем кастомные настройки Vite - пусть работает по умолчанию
-  electron: {
-    build: [
-      {
-        entry: 'electron/main.ts'
-      }
-    ]
   }
 })

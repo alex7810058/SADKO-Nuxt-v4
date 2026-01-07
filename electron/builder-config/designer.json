@@ -7,17 +7,23 @@
   },
   "files": [
     "**/*",
-    "../apps/Designer/.output/**/*",
-    "../shared/**/*"
+    {
+      "from": "../apps/Designer/.output",
+      "to": "apps/Designer/.output"
+    },
+    {
+      "from": "../shared",
+      "to": "shared"
+    }
   ],
   "extraResources": [
     {
-      "from": "../shared/assets/icons/designer.ico",
+      "from": "shared/assets/icons/designer.ico",
       "to": "assets/designer.ico"
     }
   ],
   "win": {
     "target": "portable",
-    "icon": "../shared/assets/icons/designer.ico"
+    "icon": "shared/assets/icons/designer.ico"
   }
 }

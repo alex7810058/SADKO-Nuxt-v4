@@ -1,24 +1,38 @@
+// apps/Designer/nuxt.config.ts
 export default defineNuxtConfig({
-  modules: [
-    '@nuxt/ui'
-  ],
-  css: ['@sadko/shared/css/nuxt-ui.main.css'],
+  modules: ['@nuxt/ui'],
 
-  // Важно для Electron!
+  // Ключевые настройки для SPA в Electron
   ssr: false,
+  nitro: {
+    preset: 'static',
+    serveStatic: true
+  },
 
-  // Dev сервер на порту 3001
-  devServer: {
-    port: 3001
+  router: {
+    options: {
+      hashMode: false
+    }
   },
 
   app: {
-    baseURL: process.env.NODE_ENV === 'production' ? './' : '/',
-    buildAssetsDir: '/_nuxt/'
+    baseURL: './',  // Критически важно
+    buildAssetsDir: '_nuxt/',  // Без начального слеша!
+    cdnURL: ''  // Явно отключаем CDN
   },
 
-  // Настройки для сборки
-  nitro: {
-    preset: 'node-server'
+  // Явная настройка путей сборки
+  vite: {
+    base: './',  // Базовый путь для Vite
+    build: {
+      assetsDir: '_nuxt',
+      rollupOptions: {
+        output: {
+          assetFileNames: '_nuxt/[name]-[hash][extname]',
+          chunkFileNames: '_nuxt/[name]-[hash].js',
+          entryFileNames: '_nuxt/[name]-[hash].js'
+        }
+      }
+    }
   }
 })
